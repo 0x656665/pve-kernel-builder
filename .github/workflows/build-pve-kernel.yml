@@ -78,7 +78,8 @@ on:
         value: ${{ jobs.build.outputs.artifacts-name }}
 
 env:
-  DEBIAN_RELEASE: bullseye
+  DEBIAN_RELEASE: bookworm
+  REPO_BRANCH: bookworm-6.8
 
 jobs:
   build:
