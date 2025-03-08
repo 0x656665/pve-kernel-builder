@@ -1,12 +1,12 @@
 #
 # This Dockerfile builds the newest kernel with the RMRR patch
 #
-ARG DEBIAN_RELEASE=bullseye
+ARG DEBIAN_RELEASE=bookworm
 FROM debian:${DEBIAN_RELEASE}-slim
 
 ARG DEBIAN_RELEASE
 ARG REPO_URL=git://git.proxmox.com/git/pve-kernel.git
-ARG REPO_BRANCH=pve-kernel-5.15
+ARG REPO_BRANCH=bookworm-6.8
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -14,8 +14,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN set -x \
   && apt update \
   && apt install -y apt-utils ca-certificates wget \
-  && wget http://download.proxmox.com/debian/proxmox-release-bullseye.gpg -qO /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg \
-  && chmod +r /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg \
+  && wget http://download.proxmox.com/debian/proxmox-release-bookworm.gpg -qO /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg \
+  && chmod +r /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg \
   && echo "deb http://download.proxmox.com/debian/pve ${DEBIAN_RELEASE} pve-no-subscription" \
 	> /etc/apt/sources.list.d/pve-no-subscription.list \
   && apt update \
